@@ -1,0 +1,39 @@
+*** EXAMPLE PROGRAM ***
+
+C++ program for finite-difference simulation of one-dimensional electrochemical systems (planar, spherical 
+and cylindrical electrodes) with asymmetric (N,2) high-order approximation for the space derivatives (from 3- to 7-point 
+approximations), exponentially expanding grids and making use of a sparse matrix algorithm (EIGEN_SP). 
+
+The program can be compiled in any Linux-like system with 'EIGEN' (a C++ template library for linear algebra: http://eigen.tuxfamily.org).
+The Makefile file mus be adapted to the environment. Once edited, type 'make' at the command line within the file directory.
+
+The resulting executable "Example.exe" creates the file "Example_001" with the simulation results in three
+columns: dimensionless time \t dimensionless potential \t dimensionless current.
+
+
+The files can be readily edited and extended to other values of parameters and/or geometries, mechanisms and techniques.
+
+The following source and header files can be found:
+
+*'main.cpp'
+It includes the values of the system's variables (electrode geometry, thermodynamic and kinetic magnitudes, etc.) 
+and of the parameters for the simulations (spatial grid, timesteps, derivative approximations, etc.).
+
+* 'CoefsAlphaBeta.cpp', 'CoefsAlphaBeta.h'
+Functions for the calculation of the coefficients of the (N,2) forms (with N=3-7) for the approximation of 
+the first and second space derivatives. 
+It also contains the formulae of other (N,M) forms, including the (N,1) approximations (with N=3-6) for the 
+calculation of the species surface flux.
+
+* 'simul.cpp', 'simul.h'
+Functions for the filling of the matrix and for the resolution of the system of linear equations with the sparse
+matrix routine 'EIGEN_SP'.
+
+* 'somedefs.h'
+Definitions of the system's variables and numerical simulation's parameters.
+
+* 'somefuncs.cpp', 'somefuncs.h'
+It includes:
+Calculation of the first-interval amplitude
+Calculation of the CV potential perturbation
+Default values of the system's variables and the simulation's parameters

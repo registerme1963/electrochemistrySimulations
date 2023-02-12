@@ -1,0 +1,63 @@
+
+MAKEFILE      = Makefile
+
+####### Compiler, tools and options
+
+CC            = gcc
+CXX           = g++
+CFLAGS        = -Wall 
+CXXFLAGS      = -Wall 
+#path for eigen files must be include if not instaled in include path 
+# example for a specific windows instalation in which the eigen files are in /c/LibC++/eigen3
+EIGEN	      = /c/LibC++/
+INCPATH       = -I/usr/include -I./ -I$(EIGEN)
+LINK          = g++
+LFLAGS        = -Wl,-O1
+LIBS          = $(SUBLIBS) -L/usr/lib 
+
+####### Output directory
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       = ./main.cpp \
+		./somefuncs.cpp \
+		./CoefsAlphaBeta.cpp \
+		./simul.cpp 
+OBJECTS       = main.o \
+		somefuncs.o \
+		CoefsAlphaBeta.o \
+		simul.o
+
+TARGET        = Example
+
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: Makefile $(TARGET)
+
+$(TARGET):  $(OBJECTS)  
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS)
+
+
