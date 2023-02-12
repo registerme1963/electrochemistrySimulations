@@ -1,0 +1,8 @@
+REference:
+Brute force (or not so brute) digital simulation in electrochemistry revisited
+Francisco Martínez-Ortiz a, Noemí Zoroa b, Eduardo Laborda a, Angela Molina a
+Chemical Physics Letters
+Volume 643, January 2016, Pages 71-76
+https://doi.org/10.1016/j.cplett.2015.11.011
+ABSTRACT:
+The use of very high order spatial discretisation in digital simulation of electrochemical experiments is assessed, considering up to asymmetric 8-point approximations for the derivatives. A wide range of conditions are examined, including several mechanisms and electrodes and potential-step and potential-sweep experiments. In all cases it is found that asymmetric multi-point approximations in combination with exponentially expanding grids provides very accurate results and with very reduced number of grid points (<15). Consequently, the direct (‘brute force’) resolution of the finite-difference equation system by standard matrix techniques becomes a competitive and more general alternative to specialised methods like the Thomas algorithm.
